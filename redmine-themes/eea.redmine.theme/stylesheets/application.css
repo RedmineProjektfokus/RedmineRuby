@@ -1,0 +1,121 @@
+/* load the default Redmine stylesheet */
+@import url(../../../stylesheets/application.css);
+
+/* general */
+body {
+ padding: 0px 10px;
+}
+
+/* top-menu */
+#top-menu {
+    background: #fff;
+}
+
+#top-menu a {
+    color: #3E5B76;
+}
+
+/* header */
+#header {
+    background: #A5CED1 url(../images/top_01.png) repeat-y;
+    height: 105px;
+    border-top: 4px solid #6F7072;
+}
+
+#header h1 {
+    padding-left: 40px;
+    margin-top: 25px;
+    display: inline-block;
+}
+
+#header h1 .breadcrumbs{
+ display: inline;
+ font-size: 1em;
+ font-weight: inherit;
+}
+#header h1 .breadcrumbs a.ancestor{
+    font-size: .9em;
+}
+
+#quick-search label,
+#quick-search label a {
+    color: #00446A;
+}
+
+#main-menu {
+    background: #00446A;
+    width: 100%;
+    left: 0px;
+}
+
+#main-menu li a {
+    font-weight: normal;
+}
+
+#right-image-container {
+}
+
+/* agile board */
+.agile-board-fullscreen #sidebar {
+    z-index: 0 !important;
+}
+
+/* footer */
+#footer {
+    background: #CEDC32;
+    padding: 15px;
+    color: #999;
+}
+
+/* move search box */
+body #top-menu {
+    height: 25px;
+}
+
+#quick-search {
+/*    margin-top: -33px;*/
+    height: 24px;
+    background: transparent;
+}
+
+/* relocate the menu for sign in */
+#account ul {
+    display: block;
+/*    margin-right: 415px;*/
+}
+
+#account ul,
+#loggedas,
+#top-menu ul {
+    margin-top: 5px;
+}
+
+.controller-mail_reminders select{ width: 100%; }
+
+#admin-menu a.wiki-links { 
+    background-repeat: no-repeat;
+    padding-left: 20px;
+}
+
+#history {
+    border-top: 1px solid #d7d7d7;
+    border-radius: 3px 3px 3px 3px;
+}
+
+#issue-changesets {
+    margin-right: 0.5rem;
+    margin-top: 1rem;
+}
+
+#projects-index ul.projects li.root {
+	overflow: hidden;
+}
+
+#projects-index ul.projects div.description {
+    padding-top: 0.5em;
+    display: none;
+}
+
+#content .jstTabs.tabs {
+    margin-bottom: 0px;
+}

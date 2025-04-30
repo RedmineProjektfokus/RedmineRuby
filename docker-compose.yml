@@ -1,0 +1,57 @@
+services:
+  redmine:
+    build:
+      context: .
+      dockerfile: dockerfile.redmine
+    container_name: redmine
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      REDMINE_DB_MYSQL: db
+      REDMINE_DB_USERNAME: redmine
+      REDMINE_DB_PASSWORD: redmine
+      REDMINE_DB_DATABASE: redmine
+      SECRET_KEY_BASE: ef28c419dca2eb4535531881b7b16da1fd300b4047fd227da38075903c9151b5e930e83de15434a14d85952d01ae6fc131b3681dddad7f72de67ac497f887ee5
+      RAILS_ENV: production
+    volumes:
+      - ./entrypoint.sh:/usr/local/bin/entrypoint.sh
+      - ./redmine-src:/usr/src/redmine
+      - ./redmine-data:/usr/src/redmine/files
+      - ./redmine-plugins:/usr/src/redmine/plugins
+      - ./redmine-themes:/usr/src/redmine/public/themes
+    working_dir: /usr/src/redmine
+    entrypoint: ["/usr/local/bin/entrypoint.sh"]
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    container_name: redmine-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: redmine
+      MYSQL_USER: redmine
+      MYSQL_PASSWORD: redmine
+    volumes:
+      - redmine-db-data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: redmine-phpmyadmin
+    restart: always
+    ports:
+      - "9090:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+    depends_on:
+      - db
+
+volumes:
+  redmine-db-data:
+  redmine-data:
+  redmine-plugins:
+  redmine-themes:
